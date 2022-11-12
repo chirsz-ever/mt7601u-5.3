@@ -352,7 +352,7 @@ void mt7601u_phy_recalibrate_after_assoc(struct mt7601u_dev *dev);
 int mt7601u_phy_get_rssi(struct mt7601u_dev *dev,
 			 struct mt7601u_rxwi *rxwi, u16 rate);
 void mt7601u_phy_con_cal_onoff(struct mt7601u_dev *dev,
-			       struct ieee80211_bss_conf *info);
+			       struct ieee80211_vif *vif);
 
 /* MAC */
 void mt7601u_mac_work(struct work_struct *work);
@@ -368,7 +368,7 @@ void mt7601u_mac_set_ampdu_factor(struct mt7601u_dev *dev);
 void mt7601u_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
 		struct sk_buff *skb);
 int mt7601u_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-		    u16 queue, const struct ieee80211_tx_queue_params *params);
+		    unsigned int link_id, u16 queue, const struct ieee80211_tx_queue_params *params);
 void mt7601u_tx_status(struct mt7601u_dev *dev, struct sk_buff *skb);
 void mt7601u_tx_stat(struct work_struct *work);
 

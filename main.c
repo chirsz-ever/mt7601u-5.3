@@ -132,14 +132,14 @@ mt76_configure_filter(struct ieee80211_hw *hw, unsigned int changed_flags,
 
 static void
 mt7601u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-			 struct ieee80211_bss_conf *info, u32 changed)
+			 struct ieee80211_bss_conf *info, u64 changed)
 {
 	struct mt7601u_dev *dev = hw->priv;
 
 	mutex_lock(&dev->mutex);
 
 	if (changed & BSS_CHANGED_ASSOC)
-		mt7601u_phy_con_cal_onoff(dev, info);
+		mt7601u_phy_con_cal_onoff(dev, vif);
 
 	if (changed & BSS_CHANGED_BSSID) {
 		mt7601u_addr_wr(dev, MT_MAC_BSSID_DW0, info->bssid);
